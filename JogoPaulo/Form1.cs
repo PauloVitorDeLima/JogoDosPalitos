@@ -71,6 +71,7 @@ namespace JogoPaulo
 
         private void BtRetirar_Click(object sender, EventArgs e)
         {
+            MskTxtBxPalitos.Focus();
             //Verifica se o valor está vazio ou nulo
             if (String.IsNullOrEmpty(MskTxtBxPalitos.Text))
             {
@@ -78,285 +79,301 @@ namespace JogoPaulo
                 MessageBox.Show("É necessário inserir um valor para jogar", "",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else 
+            else
             {
                 //Adiciona o valor da MaskTextBox a variavel RetiradaPlayer 
                 RetiradaPlayer = int.Parse(MskTxtBxPalitos.Text);
-                //Verifica se o Player escolheu 1
-                if (RetiradaPlayer == 1)
+                if (Quantia == 2 && RetiradaPlayer == 3 ||
+                    Quantia == 1 && RetiradaPlayer == 2 ||
+                    Quantia == 1 && RetiradaPlayer == 3)
                 {
-                    //Se o Player escolheu 1 o Computador joga 3
-                    RetiradaPC = 3;
-                    //Informa que tirou 1 palito
-                    RTextBoxDisplay.AppendText("Você tirou " + RetiradaPlayer + " Palito");
-                    RTextBoxDisplay.AppendText(Environment.NewLine);
-                    //Calcula quantos palitos ainda restam
-                    Quantia -= RetiradaPlayer;
-                    //Se a quantia for igual ou menor que zero significa que o Computador Ganhou
-                    if (Quantia <= 0)
-                    {
-                        //MessageBox informando que o player perdeu
-                        MessageBox.Show("Você Perdeu... Rs Rs :)", "KKKKJ Muito fácil!!!",
-                            MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        //Limpa o MaskTextBox e o RichTextBox
-                        MskTxtBxPalitos.Clear();
-                        RTextBoxDisplay.Clear();
-                        //Abre outro MessageBox perguntando se deseja jogar novamente
-                        if (DialogResult.No == MessageBox.Show("Deseja Jogar novamente?",
-                            "DESAFIO", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
-                        {
-                            //se a resposta for nao, fecha a application
-                            Application.Exit();
-                        }
-                        else
-                        {
-                            //se a resposta for Sim faz voltar desde o inicio, ou seja
-                            //deixa o botao, Label e MaskTextBox invisivel.
-                            BtRetirar.Visible = false;
-                            LbRetirar.Visible = false;
-                            MskTxtBxPalitos.Visible = false;
-                            //Ativa o botao e o NumericUpDown
-                            BtJogar.Enabled = true;
-                            NumericQuantidade.Enabled = true;
-                        }
-                    }
-                    //Se a quantia for maior que 0 o jogo continua
-                    if(Quantia > 0)
-                    { 
-                        //Informa quantos palitos restam
-                        RTextBoxDisplay.AppendText("Restam  "+ Quantia + " Palitos");
-                        RTextBoxDisplay.AppendText(Environment.NewLine);
-                        //Computador retira 3 Palitos
-                        RTextBoxDisplay.AppendText("Retiro " + RetiradaPC + " Palitos");
-                        RTextBoxDisplay.AppendText(Environment.NewLine);
-                        //Calcula quantos palitos ainda restam
-                        Quantia -= RetiradaPC;
-                        //Se a quantia for igual ou menor que zero significa que o Player Ganhou
-                        if (Quantia <= 0)
-                        {
-                            //MessageBox informando que o Computador perdeu
-                            MessageBox.Show("COMO ISSO É POSSÍVEL?????", "Perdi!",
-                                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                            MskTxtBxPalitos.Clear();
-                            RTextBoxDisplay.Clear();
-                            //Abre outro MessageBox perguntando se deseja jogar novamente
-                            if (DialogResult.No == MessageBox.Show("Deseja Jogar novamente?",
-                                "DESAFIO", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
-                            {
-                                //se a resposta for nao, fecha a application
-                                Application.Exit();
-                            }
-                            else
-                            {
-                                //se a resposta for Sim faz voltar desde o inicio, ou seja
-                                //deixa o botao, Label e MaskTextBox invisivel.
-                                BtRetirar.Visible = false;
-                                LbRetirar.Visible = false;
-                                MskTxtBxPalitos.Visible = false;
-                                //Ativa o botao e o NumericUpDown
-                                BtJogar.Enabled = true;
-                                NumericQuantidade.Enabled = true;
-                            }
-                        }
-                        //Se a quantia for maior que 0 o jogo continua
-                        if (Quantia > 0)
-                        {
-                            //Informa que é a vez do PLayer
-                            RTextBoxDisplay.AppendText("Sua Vez");
-                            RTextBoxDisplay.AppendText(Environment.NewLine);
-                            //informa quantos palitos restam
-                            RTextBoxDisplay.AppendText("Restam " + Quantia + " Palitos");
-                            RTextBoxDisplay.AppendText(Environment.NewLine);
-                            //Limpa MaskTextBox
-                            MskTxtBxPalitos.Clear();
-                        }   
-                    }
-                }
-
-                if (RetiradaPlayer == 2)
-                {
-                    //Se o Player escolheu 1 o Computador joga 2
-                    RetiradaPC = 2;
-                    //Informa que tirou 2 palito
-                    RTextBoxDisplay.AppendText("Você tirou " + RetiradaPlayer + " Palitos");
-                    RTextBoxDisplay.AppendText(Environment.NewLine);
-                    //Calcula quantos palitos ainda restam
-                    Quantia -= RetiradaPlayer;
-                    //Se a quantia for igual ou menor que zero significa que o Computador Ganhou
-                    if (Quantia <= 0)
-                    {
-                        //MessageBox informando que o player perdeu
-                        MessageBox.Show("Você Perdeu... Rs Rs :)", "KKKKJ Muito fácil!!!",
-                            MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        MskTxtBxPalitos.Clear();
-                        RTextBoxDisplay.Clear();
-                        //Abre outro MessageBox perguntando se deseja jogar novamente
-                        if (DialogResult.No == MessageBox.Show("Deseja Jogar novamente?",
-                            "DESAFIO", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
-                        {
-                            //se a resposta for nao, fecha a application
-                            Application.Exit();
-                        }
-                        else
-                        {
-                            //se a resposta for Sim faz voltar desde o inicio, ou seja
-                            //deixa o botao, Label e MaskTextBox invisivel.
-                            BtRetirar.Visible = false;
-                            LbRetirar.Visible = false;
-                            MskTxtBxPalitos.Visible = false;
-                            //Ativa o botao e o NumericUpDown
-                            BtJogar.Enabled = true;
-                            NumericQuantidade.Enabled = true;
-                        }
-                    }
-                    //Se a quantia for maior que 0 o jogo continua
-                    if (Quantia > 0)
-                    {
-                        //informa quantos palitos restam
-                        RTextBoxDisplay.AppendText("Restam " + Quantia + " Palitos");
-                        RTextBoxDisplay.AppendText(Environment.NewLine);
-                        //Computador retira 2 Palitos
-                        RTextBoxDisplay.AppendText("Retiro " + RetiradaPC + " Palitos");
-                         RTextBoxDisplay.AppendText(Environment.NewLine);
-                        //Calcula quantos palitos ainda restam
-                        Quantia -= RetiradaPC;
-                        //Se a quantia for igual ou menor que zero significa que o Player Ganhou
-                        if (Quantia <= 0)
-                        {
-                            //MessageBox informando que o Computador perdeu
-                            MessageBox.Show("COMO ISSO É POSSÍVEL?????", "Perdi!",
-                            MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                            MskTxtBxPalitos.Clear();
-                            RTextBoxDisplay.Clear();
-                            //Abre outro MessageBox perguntando se deseja jogar novamente
-                            if (DialogResult.No == MessageBox.Show("Deseja Jogar novamente?",
-                                "DESAFIO", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
-                            {
-                                //se a resposta for nao, fecha a application
-                                Application.Exit();
-                            }
-                            else
-                            {
-                                //se a resposta for Sim faz voltar desde o inicio, ou seja
-                                //deixa o botao, Label e MaskTextBox invisivel.
-                                BtRetirar.Visible = false;
-                                LbRetirar.Visible = false;
-                                MskTxtBxPalitos.Visible = false;
-                                //Ativa o botao e o NumericUpDown
-                                BtJogar.Enabled = true;
-                                NumericQuantidade.Enabled = true;
-                            }
-                        }   
-                        //Se a quantia for maior que 0 o jogo continua
-                        if (Quantia > 0)
-                        {
-                            //Informa que é a vez do PLayer
-                            RTextBoxDisplay.AppendText("Sua Vez");
-                            RTextBoxDisplay.AppendText(Environment.NewLine);
-                            //informa quantos palitos restam
-                            RTextBoxDisplay.AppendText("Restam " + Quantia + " Palitos");
-                            RTextBoxDisplay.AppendText(Environment.NewLine);
-                            //Limpa MaskTextBox
-                            MskTxtBxPalitos.Clear();    
-                        }
-                    }
-                }
-
-                if (RetiradaPlayer == 3)
-                {
-                    //Se o Player escolheu 3 o Computador joga 1
-                    RetiradaPC = 1;
-                    //Informa que tirou 3 palito
-                    RTextBoxDisplay.AppendText("Você tirou " + RetiradaPlayer + " Palitos");
-                    RTextBoxDisplay.AppendText(Environment.NewLine);
-                    //Calcula quantos palitos ainda restam
-                    Quantia -= RetiradaPlayer;
-                    //Se a quantia for igual ou menor que zero significa que o Computador Ganhou
-                    if (Quantia <= 0)
-                    {
-                        //MessageBox informando que o Player perdeu
-                        MessageBox.Show("Você Perdeu... Rs Rs :)", "KKKKJ Muito fácil!!!",
-                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        MskTxtBxPalitos.Clear();
-                        RTextBoxDisplay.Clear();
-                        //Abre outro MessageBox perguntando se deseja jogar novamente
-                        if (DialogResult.No == MessageBox.Show("Deseja Jogar novamente?",
-                        "DESAFIO", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
-                        {
-                            //se a resposta for nao, fecha a application
-                            Application.Exit();
-                        }
-                        else
-                        {
-                            //se a resposta for Sim faz voltar desde o inicio, ou seja
-                            //deixa o botao, Label e MaskTextBox invisivel.
-                            BtRetirar.Visible = false;
-                            LbRetirar.Visible = false;
-                            MskTxtBxPalitos.Visible = false;
-                            //Ativa o botao e o NumericUpDown
-                            BtJogar.Enabled = true;
-                            NumericQuantidade.Enabled = true;
-                        }
-                    }
-                    //Se a quantia for maior que 0 o jogo continua
-                    if (Quantia > 0)
-                    {
-                        //informa quantos palitos restam
-                        RTextBoxDisplay.AppendText("Restam " + Quantia + " Palitos");
-                        RTextBoxDisplay.AppendText(Environment.NewLine);
-                        //Computador retira 1 Palitos
-                        RTextBoxDisplay.AppendText("Retiro " + RetiradaPC + " Palito");
-                        RTextBoxDisplay.AppendText(Environment.NewLine);
-                        //Calcula quantos palitos ainda restam
-                        Quantia -= RetiradaPC;
-                        if (Quantia <= 0)
-                        {
-                            //MessageBox informando que o Computador perdeu
-                            MessageBox.Show("COMO ISSO É POSSÍVEL?????", "Perdi!",
-                            MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                            MskTxtBxPalitos.Clear();
-                            RTextBoxDisplay.Clear();
-                            //Abre outro MessageBox perguntando se deseja jogar novamente
-                            if (DialogResult.No == MessageBox.Show("Deseja Jogar novamente?",
-                                "DESAFIO", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
-                            {
-                                ////se a resposta for nao, fecha a application
-                                Application.Exit();
-                            }
-                            else
-                            {
-                                //se a resposta for Sim faz voltar desde o inicio, ou seja
-                                //deixa o botao, Label e MaskTextBox invisivel.
-                                BtRetirar.Visible = false;
-                                LbRetirar.Visible = false;
-                                MskTxtBxPalitos.Visible = false;
-                                //Ativa o botao e o NumericUpDown
-                                BtJogar.Enabled = true;
-                                NumericQuantidade.Enabled = true;
-                            }
-                        }
-                        //Se a quantia for maior que 0 o jogo continua
-                        if (Quantia > 0)
-                        {
-                            //Informa que é a vez do PLayer
-                            RTextBoxDisplay.AppendText("Sua Vez");
-                            RTextBoxDisplay.AppendText(Environment.NewLine);
-                            //informa quantos palitos restam
-                            RTextBoxDisplay.AppendText("Restam " + Quantia + " Palitos");
-                            RTextBoxDisplay.AppendText(Environment.NewLine);
-                            //Limpa MaskTextBox
-                            MskTxtBxPalitos.Clear();
-                        }
-                    }
-                }
-                //Caso tire valor diferente de 1, 2 ou 3
-                else if(RetiradaPlayer != 1 && RetiradaPlayer != 2 && RetiradaPlayer != 3)
-                {
-                    //Abre MessageBox informando que não é possível concluir essa ação
-                    MessageBox.Show("São permitidos retirar 1 a 3 palitos por jogada", "",
+                    //MessageBox informando que o player perdeu
+                    MessageBox.Show("Não foi possível retirar essa quantidade", "CUIDADO",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    //limpa MaskTextBox
+                    //Limpa o MaskTextBox e o RichTextBox
                     MskTxtBxPalitos.Clear();
+                }
+                else
+                {
+
+
+                    //Verifica se o Player escolheu 1
+                    if (RetiradaPlayer == 1)
+                    {
+                        //Se o Player escolheu 1 o Computador joga 3
+                        RetiradaPC = 3;
+                        //Informa que tirou 1 palito
+                        RTextBoxDisplay.AppendText("Você tirou " + RetiradaPlayer + " Palito");
+                        RTextBoxDisplay.AppendText(Environment.NewLine);
+                        //Calcula quantos palitos ainda restam
+                        Quantia -= RetiradaPlayer;
+                        //Se a quantia for igual ou menor que zero significa que o Computador Ganhou
+                        if (Quantia <= 0)
+                        {
+                            //MessageBox informando que o player perdeu
+                            MessageBox.Show("Você Perdeu... Rs Rs :)", "KKKKJ Muito fácil!!!",
+                            MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            //Limpa o MaskTextBox e o RichTextBox
+                            MskTxtBxPalitos.Clear();
+                            RTextBoxDisplay.Clear();
+                            //Abre outro MessageBox perguntando se deseja jogar novamente
+                            if (DialogResult.No == MessageBox.Show("Deseja Jogar novamente?",
+                                "DESAFIO", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+                            {
+                                //se a resposta for nao, fecha a application
+                                Application.Exit();
+                            }
+                            else
+                            {
+                                //se a resposta for Sim faz voltar desde o inicio, ou seja
+                                //deixa o botao, Label e MaskTextBox invisivel.
+                                BtRetirar.Visible = false;
+                                LbRetirar.Visible = false;
+                                MskTxtBxPalitos.Visible = false;
+                                //Ativa o botao e o NumericUpDown
+                                BtJogar.Enabled = true;
+                                NumericQuantidade.Enabled = true;
+                            }
+                        }
+                        //Se a quantia for maior que 0 o jogo continua
+                        if (Quantia > 0)
+                        {
+                            //Informa quantos palitos restam
+                            RTextBoxDisplay.AppendText("Restam  " + Quantia + " Palitos");
+                            RTextBoxDisplay.AppendText(Environment.NewLine);
+                            //Computador retira 3 Palitos
+                            RTextBoxDisplay.AppendText("Retiro " + RetiradaPC + " Palitos");
+                            RTextBoxDisplay.AppendText(Environment.NewLine);
+                            //Calcula quantos palitos ainda restam
+                            Quantia -= RetiradaPC;
+                            //Se a quantia for igual ou menor que zero significa que o Player Ganhou
+                            if (Quantia <= 0)
+                            {
+                                //MessageBox informando que o Computador perdeu
+                                MessageBox.Show("COMO ISSO É POSSÍVEL?????", "Perdi!",
+                                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                MskTxtBxPalitos.Clear();
+                                RTextBoxDisplay.Clear();
+                                //Abre outro MessageBox perguntando se deseja jogar novamente
+                                if (DialogResult.No == MessageBox.Show("Deseja Jogar novamente?",
+                                    "DESAFIO", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+                                {
+                                    //se a resposta for nao, fecha a application
+                                    Application.Exit();
+                                }
+                                else
+                                {
+                                    //se a resposta for Sim faz voltar desde o inicio, ou seja
+                                    //deixa o botao, Label e MaskTextBox invisivel.
+                                    BtRetirar.Visible = false;
+                                    LbRetirar.Visible = false;
+                                    MskTxtBxPalitos.Visible = false;
+                                    //Ativa o botao e o NumericUpDown
+                                    BtJogar.Enabled = true;
+                                    NumericQuantidade.Enabled = true;
+                                }
+                            }
+                            //Se a quantia for maior que 0 o jogo continua
+                            if (Quantia > 0)
+                            {
+                                //Informa que é a vez do PLayer
+                                RTextBoxDisplay.AppendText("Sua Vez");
+                                RTextBoxDisplay.AppendText(Environment.NewLine);
+                                //informa quantos palitos restam
+                                RTextBoxDisplay.AppendText("Restam " + Quantia + " Palitos");
+                                RTextBoxDisplay.AppendText(Environment.NewLine);
+                                //Limpa MaskTextBox
+                                MskTxtBxPalitos.Clear();
+                                //MskTxtBxPalitos.Focus();
+                            }
+                        }
+                    }
+                    if (RetiradaPlayer == 2)
+                    {
+                        //Se o Player escolheu 1 o Computador joga 2
+                        RetiradaPC = 2;
+                        //Informa que tirou 2 palito
+                        RTextBoxDisplay.AppendText("Você tirou " + RetiradaPlayer + " Palitos");
+                        RTextBoxDisplay.AppendText(Environment.NewLine);
+                        //Calcula quantos palitos ainda restam
+                        Quantia -= RetiradaPlayer;
+                        //Se a quantia for igual ou menor que zero significa que o Computador Ganhou
+                        if (Quantia <= 0)
+                        {
+                            //MessageBox informando que o player perdeu
+                            MessageBox.Show("Você Perdeu... Rs Rs :)", "KKKKJ Muito fácil!!!",
+                            MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            MskTxtBxPalitos.Clear();
+                            RTextBoxDisplay.Clear();
+                            //Abre outro MessageBox perguntando se deseja jogar novamente
+                            if (DialogResult.No == MessageBox.Show("Deseja Jogar novamente?",
+                                "DESAFIO", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+                            {
+                                //se a resposta for nao, fecha a application
+                                Application.Exit();
+                            }
+                            else
+                            {
+                                //se a resposta for Sim faz voltar desde o inicio, ou seja
+                                //deixa o botao, Label e MaskTextBox invisivel.
+                                BtRetirar.Visible = false;
+                                LbRetirar.Visible = false;
+                                MskTxtBxPalitos.Visible = false;
+                                //Ativa o botao e o NumericUpDown
+                                BtJogar.Enabled = true;
+                                NumericQuantidade.Enabled = true;
+                            }
+                        }
+                        //Se a quantia for maior que 0 o jogo continua
+                        if (Quantia > 0)
+                        {
+                            //informa quantos palitos restam
+                            RTextBoxDisplay.AppendText("Restam " + Quantia + " Palitos");
+                            RTextBoxDisplay.AppendText(Environment.NewLine);
+                            //Computador retira 2 Palitos
+                            RTextBoxDisplay.AppendText("Retiro " + RetiradaPC + " Palitos");
+                            RTextBoxDisplay.AppendText(Environment.NewLine);
+                            //Calcula quantos palitos ainda restam
+                            Quantia -= RetiradaPC;
+                            //Se a quantia for igual ou menor que zero significa que o Player Ganhou
+                            if (Quantia <= 0)
+                            {
+                                //MessageBox informando que o Computador perdeu
+                                MessageBox.Show("COMO ISSO É POSSÍVEL?????", "Perdi!",
+                                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                MskTxtBxPalitos.Clear();
+                                RTextBoxDisplay.Clear();
+                                //Abre outro MessageBox perguntando se deseja jogar novamente
+                                if (DialogResult.No == MessageBox.Show("Deseja Jogar novamente?",
+                                    "DESAFIO", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+                                {
+                                    //se a resposta for nao, fecha a application
+                                    Application.Exit();
+                                }
+                                else
+                                {
+                                    //se a resposta for Sim faz voltar desde o inicio, ou seja
+                                    //deixa o botao, Label e MaskTextBox invisivel.
+                                    BtRetirar.Visible = false;
+                                    LbRetirar.Visible = false;
+                                    MskTxtBxPalitos.Visible = false;
+                                    //Ativa o botao e o NumericUpDown
+                                    BtJogar.Enabled = true;
+                                    NumericQuantidade.Enabled = true;
+                                }
+                            }
+                            //Se a quantia for maior que 0 o jogo continua
+                            if (Quantia > 0)
+                            {
+                                //Informa que é a vez do PLayer
+                                RTextBoxDisplay.AppendText("Sua Vez");
+                                RTextBoxDisplay.AppendText(Environment.NewLine);
+                                //informa quantos palitos restam
+                                RTextBoxDisplay.AppendText("Restam " + Quantia + " Palitos");
+                                RTextBoxDisplay.AppendText(Environment.NewLine);
+                                //Limpa MaskTextBox
+                                MskTxtBxPalitos.Clear();
+                                //MskTxtBxPalitos.Focus();
+                            }
+                        }
+                    }
+                    if (RetiradaPlayer == 3)
+                    {
+                        //Se o Player escolheu 3 o Computador joga 1
+                        RetiradaPC = 1;
+                        //Informa que tirou 3 palito
+                        RTextBoxDisplay.AppendText("Você tirou " + RetiradaPlayer + " Palitos");
+                        RTextBoxDisplay.AppendText(Environment.NewLine);
+                        //Calcula quantos palitos ainda restam
+                        Quantia -= RetiradaPlayer;
+                        //Se a quantia for igual ou menor que zero significa que o Computador Ganhou
+                        if (Quantia <= 0)
+                        {
+                            //MessageBox informando que o Player perdeu
+                            MessageBox.Show("Você Perdeu... Rs Rs :)", "KKKKJ Muito fácil!!!",
+                            MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            MskTxtBxPalitos.Clear();
+                            RTextBoxDisplay.Clear();
+                            //Abre outro MessageBox perguntando se deseja jogar novamente
+                            if (DialogResult.No == MessageBox.Show("Deseja Jogar novamente?",
+                                "DESAFIO", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+                            {
+                                //se a resposta for nao, fecha a application
+                                Application.Exit();
+                            }
+                            else
+                            {
+                                //se a resposta for Sim faz voltar desde o inicio, ou seja
+                                //deixa o botao, Label e MaskTextBox invisivel.
+                                BtRetirar.Visible = false;
+                                LbRetirar.Visible = false;
+                                MskTxtBxPalitos.Visible = false;
+                                //Ativa o botao e o NumericUpDown
+                                BtJogar.Enabled = true;
+                                NumericQuantidade.Enabled = true;
+                            }
+                        }
+                        //Se a quantia for maior que 0 o jogo continua
+                        if (Quantia > 0)
+                        {
+                            //informa quantos palitos restam
+                            RTextBoxDisplay.AppendText("Restam " + Quantia + " Palitos");
+                            RTextBoxDisplay.AppendText(Environment.NewLine);
+                            //Computador retira 1 Palitos
+                            RTextBoxDisplay.AppendText("Retiro " + RetiradaPC + " Palito");
+                            RTextBoxDisplay.AppendText(Environment.NewLine);
+                            //Calcula quantos palitos ainda restam
+                            Quantia -= RetiradaPC;
+                            if (Quantia <= 0)
+                            {
+                                //MessageBox informando que o Computador perdeu
+                                MessageBox.Show("COMO ISSO É POSSÍVEL?????", "Perdi!",
+                                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                MskTxtBxPalitos.Clear();
+                                RTextBoxDisplay.Clear();
+                                //Abre outro MessageBox perguntando se deseja jogar novamente
+                                if (DialogResult.No == MessageBox.Show("Deseja Jogar novamente?",
+                                    "DESAFIO", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+                                {
+                                    ////se a resposta for nao, fecha a application
+                                    Application.Exit();
+                                }
+                                else
+                                {
+                                    //se a resposta for Sim faz voltar desde o inicio, ou seja
+                                    //deixa o botao, Label e MaskTextBox invisivel.
+                                    BtRetirar.Visible = false;
+                                    LbRetirar.Visible = false;
+                                    MskTxtBxPalitos.Visible = false;
+                                    //Ativa o botao e o NumericUpDown
+                                    BtJogar.Enabled = true;
+                                    NumericQuantidade.Enabled = true;
+                                }
+                            }
+                            //Se a quantia for maior que 0 o jogo continua
+                            if (Quantia > 0)
+                            {
+                                //Informa que é a vez do PLayer
+                                RTextBoxDisplay.AppendText("Sua Vez");
+                                RTextBoxDisplay.AppendText(Environment.NewLine);
+                                //informa quantos palitos restam
+                                RTextBoxDisplay.AppendText("Restam " + Quantia + " Palitos");
+                                RTextBoxDisplay.AppendText(Environment.NewLine);
+                                //Limpa MaskTextBox
+                                MskTxtBxPalitos.Clear();
+                                //MskTxtBxPalitos.Focus();
+                            }
+                        }
+                    }
+                    //Caso tire valor diferente de 1, 2 ou 3
+                    else if (RetiradaPlayer != 1 && RetiradaPlayer != 2 && RetiradaPlayer != 3)
+                    {
+                        //Abre MessageBox informando que não é possível concluir essa ação
+                        MessageBox.Show("São permitidos retirar 1 a 3 palitos por jogada", "",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //limpa MaskTextBox
+                        MskTxtBxPalitos.Clear();
+                    }
                 }
             }
         }
