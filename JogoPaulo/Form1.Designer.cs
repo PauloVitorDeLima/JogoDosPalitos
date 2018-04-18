@@ -108,7 +108,7 @@
             this.RTextBoxDisplay.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RTextBoxDisplay.Location = new System.Drawing.Point(16, 119);
             this.RTextBoxDisplay.Name = "RTextBoxDisplay";
-            this.RTextBoxDisplay.Size = new System.Drawing.Size(545, 435);
+            this.RTextBoxDisplay.Size = new System.Drawing.Size(545, 450);
             this.RTextBoxDisplay.TabIndex = 5;
             this.RTextBoxDisplay.Text = "";
             // 
@@ -128,7 +128,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(573, 566);
+            this.ClientSize = new System.Drawing.Size(573, 587);
             this.Controls.Add(this.LbRetirar);
             this.Controls.Add(this.RTextBoxDisplay);
             this.Controls.Add(this.NumericQuantidade);
@@ -138,7 +138,7 @@
             this.Controls.Add(this.BtJogar);
             this.Name = "FormGame";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Jogo do Palito";
             ((System.ComponentModel.ISupportInitialize)(this.NumericQuantidade)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

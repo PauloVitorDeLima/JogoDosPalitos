@@ -13,7 +13,7 @@ namespace JogoPaulo
     public partial class FormGame : Form
     {
         //Cria variavel publica e estatica para poder mexer em locais diferentes
-        public static int Quantia, RetiradaPlayer,QuantiaInicial ,RetiradaPC = 0;
+        public static int Quantia, RetiradaPlayer, RetiradaPC = 0;
 
         public FormGame()
         {
@@ -95,24 +95,14 @@ namespace JogoPaulo
                 }
                 else
                 {
+
+
                     //Verifica se o Player escolheu 1
                     if (RetiradaPlayer == 1)
                     {
-                        QuantiaInicial = Quantia - RetiradaPlayer;
-                        if (QuantiaInicial == 20 || QuantiaInicial == 21 ||QuantiaInicial == 24 || QuantiaInicial == 25|| QuantiaInicial == 28 || QuantiaInicial == 29)
-                        {
-                            RetiradaPC = 3;
-                        }else if (QuantiaInicial == 22 || QuantiaInicial == 26 || QuantiaInicial == 30)
-                        {
-                            RetiradaPC = 1;
-                        }else if (QuantiaInicial == 23 || QuantiaInicial == 27)
-                        {
-                            RetiradaPC = 2;
-                        }
-                        else { 
                         //Se o Player escolheu 1 o Computador joga 3
                         RetiradaPC = 3;
-                        }
+                        //Informa que tirou 1 palito
                         RTextBoxDisplay.AppendText("Você tirou " + RetiradaPlayer + " Palito");
                         RTextBoxDisplay.AppendText(Environment.NewLine);
                         //Calcula quantos palitos ainda restam
@@ -194,29 +184,14 @@ namespace JogoPaulo
                                 RTextBoxDisplay.AppendText(Environment.NewLine);
                                 //Limpa MaskTextBox
                                 MskTxtBxPalitos.Clear();
+                                //MskTxtBxPalitos.Focus();
                             }
                         }
                     }
                     if (RetiradaPlayer == 2)
                     {
-                        QuantiaInicial = Quantia - RetiradaPlayer;
-                        if (QuantiaInicial == 20 || QuantiaInicial == 21 || QuantiaInicial == 24 || QuantiaInicial == 25 || QuantiaInicial == 28 || QuantiaInicial == 29)
-                        {
-                            RetiradaPC = 3;
-                        }
-                        else if (QuantiaInicial == 22 || QuantiaInicial == 26 || QuantiaInicial == 30)
-                        {
-                            RetiradaPC = 1;
-                        }
-                        else if (QuantiaInicial == 23 || QuantiaInicial == 27)
-                        {
-                            RetiradaPC = 2;
-                        }
-                        else
-                        {
-                            //Se o Player escolheu 1 o Computador joga 3
-                            RetiradaPC = 2;
-                        }
+                        //Se o Player escolheu 1 o Computador joga 2
+                        RetiradaPC = 2;
                         //Informa que tirou 2 palito
                         RTextBoxDisplay.AppendText("Você tirou " + RetiradaPlayer + " Palitos");
                         RTextBoxDisplay.AppendText(Environment.NewLine);
@@ -298,29 +273,14 @@ namespace JogoPaulo
                                 RTextBoxDisplay.AppendText(Environment.NewLine);
                                 //Limpa MaskTextBox
                                 MskTxtBxPalitos.Clear();
+                                //MskTxtBxPalitos.Focus();
                             }
                         }
                     }
                     if (RetiradaPlayer == 3)
                     {
-                        QuantiaInicial = Quantia - RetiradaPlayer;
-                        if (QuantiaInicial == 20 || QuantiaInicial == 21 || QuantiaInicial == 24 || QuantiaInicial == 25 || QuantiaInicial == 28 || QuantiaInicial == 29)
-                        {
-                            RetiradaPC = 3;
-                        }
-                        else if (QuantiaInicial == 22 || QuantiaInicial == 26 || QuantiaInicial == 30)
-                        {
-                            RetiradaPC = 1;
-                        }
-                        else if (QuantiaInicial == 23 || QuantiaInicial == 27)
-                        {
-                            RetiradaPC = 2;
-                        }
-                        else
-                        {
-                            //Se o Player escolheu 1 o Computador joga 3
-                            RetiradaPC = 1;
-                        }
+                        //Se o Player escolheu 3 o Computador joga 1
+                        RetiradaPC = 1;
                         //Informa que tirou 3 palito
                         RTextBoxDisplay.AppendText("Você tirou " + RetiradaPlayer + " Palitos");
                         RTextBoxDisplay.AppendText(Environment.NewLine);
@@ -401,6 +361,7 @@ namespace JogoPaulo
                                 RTextBoxDisplay.AppendText(Environment.NewLine);
                                 //Limpa MaskTextBox
                                 MskTxtBxPalitos.Clear();
+                                //MskTxtBxPalitos.Focus();
                             }
                         }
                     }
@@ -413,7 +374,6 @@ namespace JogoPaulo
                         //limpa MaskTextBox
                         MskTxtBxPalitos.Clear();
                     }
-                    RTextBoxDisplay.ScrollToCaret();
                 }
             }
         }
